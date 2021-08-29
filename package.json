@@ -1,0 +1,9 @@
+{
+  "name": "fend-weather-journal-app",
+  "version": "1.0.0",
+  "description": "a project for udacity",
+  "main": "index.js",
+  "repository": "https://github.com/iamkarsoft/fend-weather-journal-app.git",
+  "author": "Kofi Ramos Amoussou <karsoft92@gmail.com>",
+  "license": "MIT"
+}
