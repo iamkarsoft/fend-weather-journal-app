@@ -1,6 +1,6 @@
 // Personal API Key for OpenWeatherMap API
 const baseUrl = `http://api.openweathermap.org/data/2.5/weather?zip=`
-const apiKey = '&appid=7cabf75ed9d657f73006ef6a549f1209'
+const apiKey = '&appid=your api key'
 
 // Create a new date instance dynamically with JS
 const d = new Date();
@@ -18,19 +18,14 @@ const contentContainer = document.querySelector("#content")
 
 function buildDom(e){
 	e.preventDefault();
+
+
 	dateContainer.textContent = newDate;
 	contentContainer.textContent = feelingsInput.value;
 
 }
 
 
-const apiData = async (baseUrl,zipInput,apiKey)=>{
-		console.log(`${baseUrl}${zipInput}${apiKey}`)
-		// const response = await fetch(`${baseUrl}${zipInput}${apiKey}`)
-		// const data = await response.json();
-		// console.log(data);
-		
-}
 
 // generateButton.addEventListener('click',buildDom);
 generateButton.addEventListener('click',apiData);
@@ -39,6 +34,19 @@ generateButton.addEventListener('click',apiData);
 /* Function to GET Web API Data*/
 
 
+const apiData = async (baseUrl,zipInput,apiKey)=>{
+		console.log(`${baseUrl}${zipInput}${apiKey}`)
+
+		const response = await fetch(`${baseUrl}${zipInput}${apiKey}`)
+
+		try{
+			const weatherInfo = await response.json();
+				return weatherInfo;
+		}catch(error){
+			console.log('Error fetching Data!',error)			;
+		}
+		
+}
 
 /* Function called by event listener */
 
