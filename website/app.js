@@ -1,6 +1,7 @@
 // Personal API Key for OpenWeatherMap API
 const baseUrl = `http://api.openweathermap.org/data/2.5/weather?zip=`
-const apiKey = `&appid=Paste Your API Key`
+const apiKey = `&appid=7cabf75ed9d657f73006ef6a549f1209`
+const units = `&units=metric`
 
 // Create a new date instance dynamically with JS
 const d = new Date();
@@ -27,7 +28,7 @@ function getWeather(e) {
     e.preventDefault()
     const zip = document.querySelector("#zip").value
 
-    apiData(baseUrl, zip, apiKey)
+    apiData(baseUrl, zip, apiKey, units)
 
         .then(function(data) {
             //posting data to file
@@ -53,8 +54,8 @@ function getWeather(e) {
 /* getting weather details based on zip*/
 
 
-const apiData = async (baseUrl, zipInput, apiKey) => {
-    const response = await fetch(`${baseUrl}${zipInput}${apiKey}`)
+const apiData = async (baseUrl, zipInput, apiKey,unit) => {
+    const response = await fetch(`${baseUrl}${zipInput}${apiKey}${units}`)
 
     try {
         const weatherInfo = await response.json();
@@ -100,7 +101,7 @@ const appendData = async () => {
         const theWeatherData = await request.json();
         // console.log(theWeatherData);
         dateContainer.innerHTML = `Date: ${newDate}`;
-        tempContainer.innerHTML = `Temperature: ${theWeatherData.temp} in ${theWeatherData.location}`;
+        tempContainer.innerHTML = `Temperature: ${theWeatherData.temp} °C in ${theWeatherData.location} `;
         contentContainer.innerHTML = `Feelings: ${feelingsInput}`
 
 

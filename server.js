@@ -1,5 +1,7 @@
 // Express to run server and routes
 const express = require('express')
+const axios = require('axios');
+
 const app  = express()
 
 // using .env for managing sensitive keys
@@ -52,5 +54,4 @@ const postData = (req, res) => {
 
 // route for post data
 app.post('/new',postData)
-
 
