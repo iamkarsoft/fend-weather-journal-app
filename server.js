@@ -1,12 +1,16 @@
 // Express to run server and routes
 const express = require('express')
+const app  = express()
 
 // using .env for managing sensitive keys
 const dotenv = require('dotenv')
 
 // Start up an instance of app
 
-const app  = express()
+// Setup empty JS object to act as endpoint for all routes
+projectData = {};
+
+
 
 /* Dependencies */
 const bodyParser = require('body-parser')
@@ -27,12 +31,10 @@ app.use(express.static('website'))
 const port = "8967"
 const server = app.listen(port, ()=>{console.log(`running on localhost:${port}`)})
 
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
 
 
 
-/* Function to GET Project Data */
+/* function  */
 const weatherDetails = (req,res) =>{
 		return res.send(projectData)
 }
@@ -42,13 +44,13 @@ const weatherDetails = (req,res) =>{
 app.get('/all', weatherDetails)
 
 
-// POST request
+// getting and parsing post request
 const postData = (req, res) => {
     projectData = req.body;
     return res.send(projectData);
 }
 
-// Post Route
+// route for post data
 app.post('/new',postData)
 
 
