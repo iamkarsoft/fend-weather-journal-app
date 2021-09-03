@@ -1,5 +1,9 @@
 // Express to run server and routes
 const express = require('express')
+
+// using .env for managing sensitive keys
+const dotenv = require('dotenv')
+
 // Start up an instance of app
 
 const app  = express()
